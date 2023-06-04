@@ -6,4 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./cars.component.css']
 })
 export class CarsComponent {
+
+ addCarStatus = "";
+ inputText = ''
+  constructor() {
+
+  }
+
+  addCar() {
+   this.addCarStatus = 'машина добавлена'
+  }
+
+  onKeyUp(event: Event) {
+   //console.log(event);
+    this.inputText = (<HTMLInputElement>event.target).value
+  }
 }
