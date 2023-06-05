@@ -7,18 +7,24 @@ import { Component } from '@angular/core';
 })
 export class CarsComponent {
 
- addCarStatus = "";
- inputText = ''
+
+
+
+    cars : [{ year: number; name: string }, { year: number; name: string }, { year: number; name: string }] = [{
+    name: 'Ford',
+    year: 2015
+  }, {
+    name: 'Mazda',
+    year: 2010
+  }, {
+    name: "Audi",
+    year: 2017
+  }]
   constructor() {
 
   }
-
-  addCar() {
-   this.addCarStatus = 'машина добавлена'
+  updateCarList(car: {name: string, year: number}) {
+    this.cars.push(car)
   }
 
-  onKeyUp(event: Event) {
-   //console.log(event);
-    this.inputText = (<HTMLInputElement>event.target).value
-  }
 }
