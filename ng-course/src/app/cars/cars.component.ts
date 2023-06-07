@@ -10,16 +10,17 @@ export class CarsComponent {
 
 
 
-    cars : [{ year: number; name: string }, { year: number; name: string }, { year: number; name: string }] = [{
+    cars : [{ year: number; name: string }, /*{ year: number; name: string }, { year: number; name: string }*/] = [{
     name: 'Ford',
     year: 2015
-  }, {
+  }, /*{
     name: 'Mazda',
     year: 2010
   }, {
     name: "Audi",
     year: 2017
-  }]
+  }*/
+  ]
   constructor() {
 
   }
@@ -27,4 +28,7 @@ export class CarsComponent {
     this.cars.push(car)
   }
 
+  chengCarNamr() {
+      this.cars[0].name = 'new car Name!'
+  }
 }
