@@ -31,4 +31,8 @@ export class CarsComponent {
   chengCarNamr() {
       this.cars[0].name = 'new car Name!'
   }
+
+  deleteCar() {
+      this.cars.splice(0, 1)
+  }
 }
