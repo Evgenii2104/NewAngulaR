@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ng-course';
+  headerText = 'Создание своей дерективы';
+  items = [1, 2, 3, 4, 5];
+  current = 1
+
+  onClick(number: number) {
+    this.current = number
+  }
 }
