@@ -3,14 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
-import {BackgroundDirective} from "./directives/background.directives";
+import {PowPipe} from "./pow.pipe";
+import {CarFilterPipe} from "./car-filter.pipr";
+
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    BackgroundDirective
+    PowPipe,
+    CarFilterPipe
   ],
     imports: [
         BrowserModule,
