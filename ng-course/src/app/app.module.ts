@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {CarsServise} from "./cars.servise";
 
 
 
@@ -12,9 +14,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
   ],
     imports: [
         BrowserModule,
-        ReactiveFormsModule
+        FormsModule,
+        HttpClientModule
     ],
-  providers: [],
+  providers: [CarsServise],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
