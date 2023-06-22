@@ -2,9 +2,9 @@ import {Component} from '@angular/core';
 import {CarsServise} from "./cars.servise";
 
 interface Cars {
-  name: string,
-  color: string,
-  id: number
+  name: string;
+  color: string;
+  id: number;
 };
 
 @Component({
@@ -15,6 +15,7 @@ interface Cars {
 export class AppComponent {
 
   cars: Cars[] = [];
+  carName: string = '';
 
   constructor(private carsService: CarsServise) { }
 
@@ -22,9 +23,19 @@ export class AppComponent {
   loadCars() {
     this.carsService
       .getCars()
-       .subscribe((cars: Cars[] ) => {
+      .subscribe((cars ) => {
          console.log(cars)
-         this.cars = cars
+         // @ts-ignore
+        this.cars = cars
        })
+  }
+
+  addCar() {
+
+    // @ts-ignore
+    this.carsService.addCar(this.carName).subscribe((car: Cars) => {
+      this.cars.push(car)
+    });
+    this.carName = ''
   }
 }

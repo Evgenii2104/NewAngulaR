@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
-import {HttpClient, HttpClientJsonpModule, HttpClientModule, HttpClientXsrfModule} from "@angular/common/http"
-import {Observable, ObservableInput} from "rxjs";
+import {HttpClient} from "@angular/common/http"
+import {map, tap} from "rxjs";
 
 @Injectable()
 
@@ -10,6 +10,18 @@ export class CarsServise {
   getCars() {
     return this.http
       .get('http://localhost:3000/cars')
-      .map((response) => response)
+      .pipe(map((response) => {
+        return response
+      }))
+  }
+
+  addCar(carName: string) {
+    const data = {
+      name: carName,
+      color: 'blue',
+    }
+    return this.http.post('http://localhost:3000/cars', data).pipe(map((response) => {
+      return response
+    }))
   }
 }
