@@ -14,6 +14,14 @@ interface Cars {
 })
 export class AppComponent {
 
+  color = [
+    'red',
+    'blue',
+    'green',
+    'pink',
+    'yellow',
+    'grey'
+  ]
   cars: Cars[] = [];
   carName: string = '';
 
@@ -27,7 +35,10 @@ export class AppComponent {
          console.log(cars)
          // @ts-ignore
         this.cars = cars
-       })
+       },
+        (error) => {
+          alert(error)
+        })
   }
 
   addCar() {
@@ -37,5 +48,24 @@ export class AppComponent {
       this.cars.push(car)
     });
     this.carName = ''
+  }
+
+  getRandColor() {
+    const num = Math.round(Math.random() * (this.color.length - 1));
+    return this.color[num]
+  }
+
+  setNewColor(car: Cars) {
+    this.carsService.changeColor(car, this.getRandColor())
+      .subscribe((data) => {
+        console.log(data)
+      })
+  }
+
+  deleteCar(car: Cars) {
+    this.carsService.deleteCar(car)
+      .subscribe((data) => {
+        this.cars = this.cars.filter(c => c.id !== car.id)
+      })
   }
 }
