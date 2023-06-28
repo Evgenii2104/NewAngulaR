@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CarsServise} from "./cars.servise";
 
 interface Cars {
@@ -12,7 +12,7 @@ interface Cars {
   templateUrl: `app.component.html`,
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   color = [
     'red',
@@ -22,23 +22,19 @@ export class AppComponent {
     'yellow',
     'grey'
   ]
-  cars: Cars[] = [];
+  cars: any;
   carName: string = '';
+  appTitle: any;
 
   constructor(private carsService: CarsServise) { }
 
+  ngOnInit() {
+    this.appTitle = this.carsService.getAppTitle();
+  }
 
   loadCars() {
-    this.carsService
-      .getCars()
-      .subscribe((cars ) => {
-         console.log(cars)
-         // @ts-ignore
-        this.cars = cars
-       },
-        (error) => {
-          alert(error)
-        })
+    this.cars = this.carsService.getCars()
+
   }
 
   addCar() {
@@ -65,6 +61,7 @@ export class AppComponent {
   deleteCar(car: Cars) {
     this.carsService.deleteCar(car)
       .subscribe((data) => {
+        // @ts-ignore
         this.cars = this.cars.filter(c => c.id !== car.id)
       })
   }

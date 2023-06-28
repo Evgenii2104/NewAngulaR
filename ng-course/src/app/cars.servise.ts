@@ -1,12 +1,24 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http"
-import {catchError, map, throwError} from "rxjs";
+import {catchError, delay, map, throwError} from "rxjs";
 
 
 @Injectable()
 
 export class CarsServise {
   constructor(private http: HttpClient) { }
+
+  getAppTitle() {
+    return this.http.get('http://localhost:3000/title').pipe(
+      delay(2000),
+      map((response) => {
+        return  response
+      }), map((data) => {
+        // @ts-ignore
+        return data.value
+      })
+    )
+  }
 
   getCars() {
     const headers = new HttpHeaders({
