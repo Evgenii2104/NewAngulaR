@@ -4,20 +4,24 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import {CarsServise} from "./cars.servise";
-
-
+import {CarsService} from "./cars.servise";
+import {HomePageComponent} from "./home-page/home-page.component";
+import {CarsPageComponent} from "./cars-page/cars-page.component";
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomePageComponent,
+    CarsPageComponent
   ],
     imports: [
         BrowserModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
+        AppRoutingModule
     ],
-  providers: [CarsServise],
+  providers: [CarsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
