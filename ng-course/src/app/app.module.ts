@@ -10,6 +10,9 @@ import {CarsPageComponent} from "./cars-page/cars-page.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {CarPageComponent} from "./car-page/car-page.component";
 import {NotFaundComponent} from "./not-faund.component/not-faund.component";
+import {AuthService} from "./auth.service";
+import {AuthGuard} from "./auth-guard.service";
+import {NewPageComponent} from "./new-page/new-page.component";
 
 @NgModule({
   declarations: [
@@ -17,7 +20,8 @@ import {NotFaundComponent} from "./not-faund.component/not-faund.component";
     HomePageComponent,
     CarsPageComponent,
     CarPageComponent,
-    NotFaundComponent
+    NotFaundComponent,
+    NewPageComponent
   ],
     imports: [
         BrowserModule,
@@ -25,7 +29,7 @@ import {NotFaundComponent} from "./not-faund.component/not-faund.component";
         HttpClientModule,
         AppRoutingModule
     ],
-  providers: [CarsService],
+  providers: [CarsService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
