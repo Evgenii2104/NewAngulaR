@@ -1,25 +1,17 @@
-import {Component, NgModule} from "@angular/core";
-import {Routes, RouterModule} from "@angular/router";
-import {CarsPageComponent} from "./cars-page/cars-page.component";
+import {NgModule} from "@angular/core";
+import {Routes, RouterModule, PreloadingStrategy} from "@angular/router";
 import {HomePageComponent} from "./home-page/home-page.component";
-import {CarPageComponent} from "./car-page/car-page.component";
-import {NotFaundComponent} from "./not-faund.component/not-faund.component";
-import {AuthGuard} from "./auth-guard.service";
-import {NewPageComponent} from "./new-page/new-page.component";
+
 
 const appRoutes: Routes = [
-  { path: 'cars', component: CarsPageComponent, canActivate: [AuthGuard], children: [
-      { path: ':id/:name', component: CarPageComponent}
-    ]},
-  //{ path: 'cars/:id/:name', component: CarPageComponent},
-  { path: '', component: HomePageComponent},
-  { path: 'new', component: NewPageComponent},
-  { path: 'not-faund', component: NotFaundComponent},
-  { path:'**', redirectTo: '/not-faund'}
-]
+  { path: '', component: HomePageComponent },
+  { path: 'cars', loadChildren: (() => import("./cars-page/cars.module").then(m => m.CarsModule)) },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(appRoutes, {
+    preloadingStrategy: PreloadingStrategy
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

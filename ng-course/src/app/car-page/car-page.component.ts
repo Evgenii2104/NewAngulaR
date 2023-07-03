@@ -25,8 +25,6 @@ export class CarPageComponent implements OnInit{
     this.name = this.route.snapshot.params['name'];
     this.color = this.route.snapshot.queryParams['color'];
     this.year = this.route.snapshot.queryParams['year'];
-    // @ts-ignore
-    this.hash = this.route.snapshot.fragment
 
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
@@ -38,16 +36,4 @@ export class CarPageComponent implements OnInit{
       this.year = params['year']
     })
   }
-
-  openMazdaPage() {
-    // @ts-ignore
-    this.router.navigate(['./cars', 8, 'Mazda'], {
-      queryParams: {
-        color: 'pink',
-        year: 1995
-      },
-      fragment: 'pic'
-    })
-  }
-
 }

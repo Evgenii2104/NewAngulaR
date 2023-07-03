@@ -1,5 +1,4 @@
-<a routerLink="cars">обновите страницу</a>
-<h2>Страница машин</h2>
+<h2 appColor>Страница машин</h2>
 <hr>
 
 <div class="row">
@@ -9,12 +8,11 @@
         <a
           [routerLink]="['/cars', car.id, car.name]"
           [queryParams]="{year: car.year, color: car.color}"
-          fragment="pic"
         >
-          {{car.name}}</a>
+          {{car.name}}
+        </a>
       </li>
     </ul>
-
   </div>
   <div class="col-xs-8">
     <router-outlet></router-outlet>
