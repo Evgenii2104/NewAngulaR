@@ -1,11 +1,10 @@
-<div class="container">
-  <app-header></app-header>
-  <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-</div>
+<!--<div-->
+<!--  (mousedown)="clickedDivState = 'active'"-->
+<!--  (click)="changeDivState()"-->
+<!--  [@clickedDiv]="clickedDivState"-->
+<!--&gt;</div>-->
 
 
-
+<div
+  (click)="multiState = multiState === 'start' ? 'end' : 'start'"
+  [@multi]="multiState"></div>
