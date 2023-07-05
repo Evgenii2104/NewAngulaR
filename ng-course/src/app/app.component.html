@@ -1,10 +1,14 @@
-<!--<div-->
-<!--  (mousedown)="clickedDivState = 'active'"-->
-<!--  (click)="changeDivState()"-->
-<!--  [@clickedDiv]="clickedDivState"-->
-<!--&gt;</div>-->
-
+<button class="btn btn-primary" (click)="isVisible = !isVisible">Переключить</button>
+<hr>
 
 <div
-  (click)="multiState = multiState === 'start' ? 'end' : 'start'"
-  [@multi]="multiState"></div>
+  @divTrigger
+  class="alert alert-danger"
+  *ngIf="isVisible"
+>
+  Lerem ipson
+</div>
+<hr>
+<div
+  [@changeWidthTrigger] = "isVisible ? 'a' : 'b'"
+  style="height: 250px; width: 200px; background-color: red"></div>
