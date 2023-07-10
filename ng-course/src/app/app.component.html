@@ -3,12 +3,10 @@
 
 <div
   @divTrigger
+  (@divTrigger.start)="onAnimationStart($event)"
+  (@divTrigger.done)="onAnimationDone($event)"
   class="alert alert-danger"
   *ngIf="isVisible"
 >
   Lerem ipson
 </div>
-<hr>
-<div
-  [@changeWidthTrigger] = "isVisible ? 'a' : 'b'"
-  style="height: 250px; width: 200px; background-color: red"></div>
